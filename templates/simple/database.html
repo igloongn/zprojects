@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends "simple/base.html" %}
+{% load static %}
+{% block things %}
+<title>Database</title>
+
+<!-- THIS IS FOR THE SEARCH BAR -->
+<main class="projects">
+  <section class="hero-section text-center">
+    <div class="container container--narrow">
+      <div class="hero-section__box">
+        <h2>Search for <span>Projects</span></h2>
+      </div>
+
+      <div class="hero-section__search">
+        <form class="form" method="get">
+          <div class="form__field">
+            <label for="formInput#search">Search By Data </label>
+            <input class="input input--text" id="formInput#search" type="text" name="text"
+              placeholder="Search by Project Title" />
+          </div>
+
+          <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+<!-- THIS IS FOR THE PROJECTS -->
+<section class="projectsList">
+    <div class="container">
+      <div class="grid grid--three">
+          {% for i in project  %}
+            
+         <div class="column">
+          <div class="card project">
+            <a href="{% url 'simple:single' i.id  %}" class="project">
+              <img class="project__thumbnail" src="{{ i.featured_image.url }}" alt="project thumbnail" />
+              '<div class="card__body">'
+                <h3 class="project__title ititle">{{i.title}}</h3>
+                <p><a class="project__author" href="{% url 'user:userprofile' i.id %}">{{ i.owner.name }}</a></p>
+      <!-- <h1>The Project ID: {{ i.id }}</h1> -->
+      <!-- <br> -->
+      <!-- <h1>The Project Owner ID:{{ i.owner.id }}</h1> -->
+                <p class="project--rating">
+                  <span style="font-weight: bold;">{{i.vote_ratio}}%</span> Postitive
+                  Feedback ({{i.vote_total}} Vote{{i.vote_total|pluralize:'s'}})
+                </p>
+                <div class="project__tags">
+
+{% for tag in i.tag.all  %}
+                <span class="tag tag--pill tag--main">
+                  <small>{{tag}}</small>
+                </span>
+{% endfor %}
+
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+</section>
+
+
+{% endblock things %}
+
+
+<table style="width: 100%;">
+    <tr>
+        <th>Project</th>
+        <th>Positive Votes</th>
+        <th>Votes</th>
+        <th>Created</th>
+        <!-- <th>Edit</th> -->
+    </tr>
+    {% for i in project  %}
+    <tr>
+        <td><a href="{% url 'simple:single' i.id %}">{{i.title}}</a></td>
+        <td>{{i.vote_ratio}}%</td>
+        <td>{{i.vote_total}}</td>
+        <td>{{i.created}}</td>
+        <td><a href="{% url 'simple:update' i.id %}">Edit</a></td>
+        <td><a href="{% url 'simple:delete' i.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+

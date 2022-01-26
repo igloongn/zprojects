@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends "simple/base.html" %}
+{% load static %}
+
+{% block things %}
+<!-- {% include "simple/navbar.html" %} -->
+<title>Test</title>
+<h2><center>Hello There</center></h2>
+{%if firstname == "Temitope"%}
+<h2><center>{{firstname}}</center></h2>
+<h2><center>{{lastname}}</center></h2>
+<h2><center>{{nickname}}</center></h2>
+{%else%}
+<center><h2>There is no one here</h2></center>
+{%endif%}
+<br>
+
+<ul>
+    {%for project in project%}
+        <li>Name: {{project.description}}<a href="{% url 'simple:paras' project.id %}">Paras[{{ project.id}}]</a></li>
+            {%endfor%}
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

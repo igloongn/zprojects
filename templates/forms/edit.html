@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends "simple/base.html" %}
+{% load static %}
+{% block things %}
+<title>Edit</title>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- {{register.description}}
+    {{register.demo_link}}
+    {{register.source_link}}
+    {{register.tags}} -->
+
+    <div class="form-group">
+        <label for="my-input">{{register.title.label}}:</label>
+        {{register.title}}
+    </div>
+    <div class="form-group">
+        <label for="my-input">{{register.featured_image.label}}:</label>
+        {{register.featured_image}}
+    </div>    
+    <div class="form-group">
+        <label for="my-input">{{register.description.label}}:</label>
+        {{register.description}}
+    </div>
+    <div class="form-group">
+        <label for="my-input">{{register.demo_link.label}}:</label>
+        {{register.demo_link}}
+    </div>
+    <div class="form-group">
+        <label for="my-input">{{register.source_link.label}}:</label>
+        {{register.source_link}}
+    </div>
+    <div class="form-group">
+        <label for="my-input">{{register.tag.label}}:</label>
+        {{register.tag}}
+    </div>
+
+    <!-- {% for field in register %}
+      <div class="form-group">
+        <label for="my-input">{{field.label}}:</label>
+        {{field}}
+      </div>
+    {% endfor %} -->
+
+    <div class="form-group d-flex justify-content-center">
+        <button type="submit" class="btn btn-primary">Submit</button>   
+    </div>
+</form>
+
+{% endblock things %}

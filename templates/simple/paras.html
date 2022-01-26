@@ -1,0 +1,23 @@
+<!DOCTYPE <html>
+<title>Params</title>
+{% extends "simple/base.html" %}
+{% load static %}
+{% block things %}
+    <center><h2>{{ pk }}</h2></center>
+    <center><h2>{{ obj }}</h2></center>
+    <br><br>
+
+<ul>
+    {% if obj %}
+    <center><h4>This is Number {{obj.id}}</h4></center>
+    <h2> title: {{ obj.title }}...{{obj.description }}</h2>
+</ul>
+    
+    {% else %}
+    <center>This place is empty</center>
+    {% endif %}
+    
+<center><h1><a href="{% url 'simple:open' %}">Back to Paras</a></h1></center>
+
+
+{% endblock %}

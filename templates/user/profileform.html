@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "simple/base.html" %}
+
+{% block title %}
+  Profile Form
+{% endblock title %}
+{% block things %}
+<h1>This is the User Profile Form</h1>
+
+<main class="formPage my-xl">
+    <div class="content-box">
+        <div class="formWrapper">
+            <a class="backButton" href="{% url 'simple:database' %}"><i class="im im-angle-left"></i></a>
+            <br>
+
+            <form class="form" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    {% for field in profile %}
+                      
+                    <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}} </label>
+                    {{field}}
+                </div>
+                {% endfor %}
+                <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</main>
+
+  
+{% endblock things %}
+
+
