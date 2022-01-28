@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # This is for normal SQLITE3
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 # # This is for postgres(LOCALHOST)
 # DATABASES = {
@@ -110,16 +110,28 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # This is for postgres(AWS)
 # Still Working on it Boss
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'demo_db',
-        'USER': 'postgres',
-        'PASSWORD': 'q',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'demo_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'q',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+# This is for postgres(Microsoft Azure)
+# Still Working on it Boss
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'server297950670.postgres.database.azure.com',
+#         'NAME': 'demo_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'q',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 
